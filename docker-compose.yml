@@ -1,14 +1,18 @@
 services:
   reverse_proxy:
     build:
-      context: .
+      context: ./waf-proxy
       dockerfile: Dockerfile
     ports:
       - "80:80"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-      - ./msecurity.conf:/etc/nginx/modsec/msecurity.conf
-      - ./403.html:/etc/nginx/html/403.html 
+      - ./waf-proxy/nginx.conf:/etc/nginx/nginx.conf
+      - ./waf-proxy/msecurity.conf:/etc/nginx/modsec/msecurity.conf
+      - ./waf-proxy/403.html:/etc/nginx/html/403.html 
+  rwebapp:
+      build:
+        context: ./rwebapp
+        dockerfile: Dockerfile
   bwapp:  
     image: hackersploit/bwapp-docker
     container_name: bwapp
