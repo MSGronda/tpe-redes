@@ -8,6 +8,7 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - ./msecurity.conf:/etc/nginx/modsec/msecurity.conf
+      - ./403.html:/etc/nginx/html/403.html 
   bwapp:  
     image: hackersploit/bwapp-docker
     container_name: bwapp
