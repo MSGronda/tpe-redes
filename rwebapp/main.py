@@ -2,6 +2,7 @@ import http.server
 import socketserver
 import random
 import time
+import threading
 
 PORT = 80
 
@@ -25,13 +26,19 @@ class random_number_webapp(http.server.SimpleHTTPRequestHandler):
             </html>
             """
             
-            self.send_response(200)
-            self.send_header("Content-type", "text/html")
-            self.end_headers()
-            self.wfile.write(html_content.encode('utf-8'))
+            try:
+                self.send_response(200)
+                self.send_header("Content-type", "text/html")
+                self.end_headers()
+                self.wfile.write(html_content.encode('utf-8'))
+            except BrokenPipeError:
+                print("Client disconnected before completing the response.")
         else:
             self.send_error(404, "Page Not Found")
 
-with socketserver.TCPServer(("", PORT), random_number_webapp) as httpd:
+class ThreadingTCPServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
+    pass
+
+with ThreadingTCPServer(("", PORT), random_number_webapp) as httpd:
     print(f"Serving on port {PORT}")
     httpd.serve_forever()
