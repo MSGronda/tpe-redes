@@ -27,11 +27,11 @@ El propósito de este TP es exponer la tecnología de Web App Firewall (WAF), su
 docker compose up
 ```
 2. Una vez levantados los contenedores, las web apps se puede acceder desde:
-- bWebApp: [http://localhost/bwebapp/install.php](http://localhost/bwebapp/)
+- bWebApp: [http://localhost/bwapp/install.php](http://localhost/bwapp/)
 - rWebApp: [http://localhost/rwebapp/](http://localhost/rwebapp/)
 
 ### Setup de bWebApp:
-1. Primero se debe visitar la siguiente pagina [http://localhost/bwebapp/install.php](http://localhost/bwebapp/install.php). Ahi debe clickear en el link, cuando dice: *"Click here to install bWebApp"*
+1. Primero se debe visitar la siguiente pagina [http://localhost/bwapp/install.php](http://localhost/bwapp/install.php). Ahi debe clickear en el link, cuando dice: *"Click here to install bWebApp"*
 2. Una vez instalado, debe apretar en el tab: *New User*, en donde completar los campos provistos.
 3. Apretar en *Login* e ingresar la información que uso anteriormente. Importante: seleccionar "low" cuando pide: "Set the security level".
 4. Una vez autenticado, se encontrara en el tab *Bugs*, en el cual puede seleccionar que tipo de ataque quiere probar (ej: SQL inection (GET/Search)).
